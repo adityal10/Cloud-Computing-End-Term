@@ -25,13 +25,13 @@ jobs:
       # Build the Docker image
       - name: Build Docker image
         run: |
-          docker build . \
-            --file Dockerfile \
-            --tag ${{ secrets.DOCKER_USERNAME }}/my-image-name:latest \
-            --tag ${{ secrets.DOCKER_USERNAME }}/my-image-name:$(date +%Y%m%d%H%M%S)
+          docker build ./simple-python-app \
+            --file ./simple-python-app/Dockerfile \
+            --tag ${{ secrets.DOCKER_USERNAME }}/simple-python-app:latest \
+            --tag ${{ secrets.DOCKER_USERNAME }}/simple-python-app:$(date +%Y%m%d%H%M%S)
 
       # Push the Docker image to Docker Hub
       - name: Push Docker image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/my-image-name:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/my-image-name:$(date +%Y%m%d%H%M%S)
+          docker push ${{ secrets.DOCKER_USERNAME }}/simple-python-app:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/simple-python-app:$(date +%Y%m%d%H%M%S)
