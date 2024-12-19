@@ -25,15 +25,15 @@ jobs:
       # Step 3: Build Docker images with both tags
       - name: Build Docker image with latest tag
         run: |
-          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          # TIMESTAMP=$(date +%Y%m%d%H%M%S)
           docker build ./simple-python-app \
             --file ./simple-python-app/Dockerfile \
             --tag ${{ secrets.DOCKER_USERNAME }}/simple-python-app:latest \
-            --tag ${{ secrets.DOCKER_USERNAME }}/simple-python-app:${TIMESTAMP}
+            # --tag ${{ secrets.DOCKER_USERNAME }}/simple-python-app:latest
 
       # Step 4: Push Docker images with both tags
       - name: Push Docker images
         run: |
-          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          # TIMESTAMP=$(date +%Y%m%d%H%M%S)
           docker push ${{ secrets.DOCKER_USERNAME }}/simple-python-app:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/simple-python-app:${TIMESTAMP}
+          # docker push ${{ secrets.DOCKER_USERNAME }}/simple-python-app:latest
